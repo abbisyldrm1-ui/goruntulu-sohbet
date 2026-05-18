@@ -80,6 +80,17 @@ export default function LoginPage() {
           Giriş Yap
         </button>
 
+        <p style={styles.login}>
+          Hesabın yok mu?
+
+          <span
+            style={styles.gold}
+            onClick={() => (window.location.href = "/register")}
+          >
+            {" "}Kayıt Ol
+          </span>
+        </p>
+
       </div>
 
     </main>
@@ -240,6 +251,26 @@ const styles = {
 
     boxShadow:
       "0 0 30px rgba(255,194,0,0.55)",
+
+  },
+
+  login: {
+
+    marginTop: "28px",
+
+    fontSize: "22px",
+
+    color: "#e5e7eb",
+
+  },
+
+  gold: {
+
+    color: "#ffd700",
+
+    fontWeight: "bold",
+
+    cursor: "pointer",
 
   },
 
