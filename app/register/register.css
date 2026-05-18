@@ -90,4 +90,11 @@
 
   cursor: pointer;
 
+}input {
+  color: black !important;
+}
+
+input::placeholder {
+  color: black !important;
+  opacity: 1 !important;
 }
