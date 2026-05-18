@@ -22,7 +22,7 @@ export default function RegisterPage() {
     <main
       style={{
         minHeight: "100vh",
-        background: "#0f0f0f",
+        backgroundColor: "#0f0f0f",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -31,12 +31,12 @@ export default function RegisterPage() {
       <div
         style={{
           width: "350px",
-          background: "#1a1a1a",
+          backgroundColor: "#1a1a1a",
           padding: "30px",
           borderRadius: "20px",
           display: "flex",
           flexDirection: "column",
-          gap: "15px",
+          gap: "20px",
         }}
       >
         <h1
@@ -44,6 +44,7 @@ export default function RegisterPage() {
             color: "gold",
             textAlign: "center",
             fontSize: "32px",
+            fontWeight: "bold",
           }}
         >
           KAYIT OL
@@ -55,13 +56,16 @@ export default function RegisterPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           style={{
+            width: "100%",
             padding: "15px",
-            borderRadius: "10px",
-            border: "none",
-            background: "white",
-            color: "black",
-            fontSize: "16px",
+            borderRadius: "12px",
+            border: "2px solid gold",
+            backgroundColor: "#ffffff",
+            color: "#000000",
+            fontSize: "18px",
+            fontWeight: "bold",
             outline: "none",
+            boxSizing: "border-box",
           }}
         />
 
@@ -71,26 +75,30 @@ export default function RegisterPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           style={{
+            width: "100%",
             padding: "15px",
-            borderRadius: "10px",
-            border: "none",
-            background: "white",
-            color: "black",
-            fontSize: "16px",
+            borderRadius: "12px",
+            border: "2px solid gold",
+            backgroundColor: "#ffffff",
+            color: "#000000",
+            fontSize: "18px",
+            fontWeight: "bold",
             outline: "none",
+            boxSizing: "border-box",
           }}
         />
 
         <button
           onClick={kayitOl}
           style={{
+            width: "100%",
             padding: "15px",
-            borderRadius: "10px",
+            borderRadius: "12px",
             border: "none",
-            background: "gold",
-            color: "black",
+            backgroundColor: "gold",
+            color: "#000000",
+            fontSize: "18px",
             fontWeight: "bold",
-            fontSize: "16px",
             cursor: "pointer",
           }}
         >
