@@ -1,7 +1,7 @@
 .registerMain {
 
   min-height: 100vh;
-  background: #0f0f0f;
+  background: black;
 
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@
 
   width: 350px;
 
-  background: #1a1a1a;
+  background: #111111;
 
   padding: 30px;
 
@@ -23,6 +23,8 @@
   flex-direction: column;
 
   gap: 20px;
+
+  border: 2px solid gold;
 
 }
 
@@ -48,9 +50,9 @@
 
   border: 2px solid gold;
 
-  background: white !important;
+  background: #222222;
 
-  color: black !important;
+  color: white !important;
 
   font-size: 18px;
 
@@ -64,7 +66,7 @@
 
 .registerInput::placeholder {
 
-  color: black !important;
+  color: #bbbbbb !important;
 
   opacity: 1;
 
@@ -90,11 +92,4 @@
 
   cursor: pointer;
 
-}input {
-  color: black !important;
-}
-
-input::placeholder {
-  color: black !important;
-  opacity: 1 !important;
 }
