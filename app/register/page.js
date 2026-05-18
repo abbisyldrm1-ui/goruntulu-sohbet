@@ -6,21 +6,34 @@ import { auth } from "../../firebase";
 import "./register.css";
 
 export default function RegisterPage() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const kayitOl = async () => {
+
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
       alert("Kayıt başarılı");
+
     } catch (error) {
+
       alert(error.message);
+
     }
+
   };
 
   return (
+
     <main className="registerMain">
+
       <div className="registerBox">
 
         <h1 className="registerTitle">
@@ -51,6 +64,9 @@ export default function RegisterPage() {
         </button>
 
       </div>
+
     </main>
+
   );
+
 }
