@@ -34,7 +34,8 @@ export default function RegisterPage() {
     <main
       style={{
         minHeight: "100vh",
-        background: "#000",
+        background: "#111827",
+
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -44,21 +45,30 @@ export default function RegisterPage() {
       <div
         style={{
           width: "350px",
-          background: "#111",
+
+          background: "#1F2937",
+
           padding: "30px",
+
           borderRadius: "20px",
+
+          border: "2px solid gold",
+
           display: "flex",
           flexDirection: "column",
+
           gap: "15px",
-          border: "2px solid gold",
         }}
       >
 
         <h1
           style={{
             color: "gold",
+
             textAlign: "center",
+
             fontSize: "32px",
+
             fontWeight: "bold",
           }}
         >
@@ -68,8 +78,10 @@ export default function RegisterPage() {
         <p
           style={{
             color: "white",
-            marginBottom: "-5px",
+
             fontWeight: "bold",
+
+            marginBottom: "-5px",
           }}
         >
           E-Mail
@@ -77,18 +89,28 @@ export default function RegisterPage() {
 
         <input
           type="email"
+
           value={email}
+
           onChange={(e) => setEmail(e.target.value)}
 
           style={{
             width: "100%",
+
             padding: "15px",
+
             borderRadius: "12px",
+
             border: "2px solid gold",
-            background: "#222",
+
+            background: "#374151",
+
             color: "white",
+
             fontSize: "18px",
+
             fontWeight: "bold",
+
             boxSizing: "border-box",
           }}
         />
@@ -96,8 +118,10 @@ export default function RegisterPage() {
         <p
           style={{
             color: "white",
-            marginBottom: "-5px",
+
             fontWeight: "bold",
+
+            marginBottom: "-5px",
           }}
         >
           Şifre
@@ -105,18 +129,28 @@ export default function RegisterPage() {
 
         <input
           type="password"
+
           value={password}
+
           onChange={(e) => setPassword(e.target.value)}
 
           style={{
             width: "100%",
+
             padding: "15px",
+
             borderRadius: "12px",
+
             border: "2px solid gold",
-            background: "#222",
+
+            background: "#374151",
+
             color: "white",
+
             fontSize: "18px",
+
             fontWeight: "bold",
+
             boxSizing: "border-box",
           }}
         />
@@ -126,14 +160,23 @@ export default function RegisterPage() {
 
           style={{
             width: "100%",
+
             padding: "15px",
+
             borderRadius: "12px",
+
             border: "none",
+
             background: "gold",
+
             color: "black",
+
             fontSize: "18px",
+
             fontWeight: "bold",
+
             cursor: "pointer",
+
             marginTop: "10px",
           }}
         >
