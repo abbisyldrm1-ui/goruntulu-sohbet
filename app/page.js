@@ -1,10 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function HomePage() {
 
   const videoRef = useRef(null);
+
+  const [mic,setMic] = useState(true);
+
+  const [cam,setCam] = useState(true);
 
   useEffect(() => {
 
@@ -14,15 +18,15 @@ export default function HomePage() {
 
   const kameraBaslat = async () => {
 
-    try {
+    try{
 
       const stream =
-        await navigator.mediaDevices.getUserMedia({
+      await navigator.mediaDevices.getUserMedia({
 
-          video:true,
-          audio:true,
+        video:true,
+        audio:true,
 
-        });
+      });
 
       if(videoRef.current){
 
@@ -30,7 +34,7 @@ export default function HomePage() {
 
       }
 
-    } catch(err){
+    }catch(err){
 
       console.log(err);
 
@@ -46,11 +50,23 @@ export default function HomePage() {
 
   const sonraki = () => {
 
-    alert("Sonraki kullanıcı aranıyor 🔥");
+    alert("Sonraki kullanıcı 🔥");
 
   };
 
-  return (
+  const mikrofonKapat = () => {
+
+    setMic(!mic);
+
+  };
+
+  const kameraKapat = () => {
+
+    setCam(!cam);
+
+  };
+
+  return(
 
     <main className="main-page">
 
@@ -84,17 +100,20 @@ export default function HomePage() {
 
       <div className="video-card">
 
-        <div className="top-buttons">
+        <button className="friend-add">
+          👤+
+        </button>
 
-          <button className="ready-btn">
-            Hazır
-          </button>
-
-          <button className="friend-btn">
-            ❤️ Arkadaş Ekle
-          </button>
-
-        </div>
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          playsInline
+          className="my-video"
+          style={{
+            opacity:cam ? 1 : 0.2
+          }}
+        />
 
         <div className="waiting">
 
@@ -110,36 +129,34 @@ export default function HomePage() {
 
         </div>
 
-        <video
-          ref={videoRef}
-          autoPlay
-          playsInline
-          muted
-          className="my-video"
-        />
+        <button
+          className="next-btn"
+          onClick={sonraki}
+        >
+          🔥 SONRAKİ
+        </button>
 
-        <div className="bottom-buttons">
+        <button
+          className="center-search"
+          onClick={eslesmeAra}
+        >
+          ✨ EŞLEŞME ARA
+        </button>
+
+        <div className="left-controls">
 
           <button
-            className="search-btn"
-            onClick={eslesmeAra}
+            className="control-btn"
+            onClick={mikrofonKapat}
           >
-            ✨ EŞLEŞME ARA
+            {mic ? "🎤" : "🔇"}
           </button>
 
           <button
-            className="next-btn"
-            onClick={sonraki}
+            className="control-btn"
+            onClick={kameraKapat}
           >
-            🔥 SONRAKİ
-          </button>
-
-          <button className="icon-btn">
-            🎤
-          </button>
-
-          <button className="icon-btn">
-            📷
+            {cam ? "📷" : "🚫"}
           </button>
 
         </div>
@@ -148,13 +165,17 @@ export default function HomePage() {
 
       <div className="bottom-nav">
 
-        <div className="nav-item">
+        <div className="nav-item nav-active">
           🏠
           <br/>
           Ana Sayfa
         </div>
 
-        <div className="nav-item">
+        <div
+          className="nav-item"
+          onClick={() =>
+          window.location.href="/"}
+        >
           👑
           <br/>
           Premium
