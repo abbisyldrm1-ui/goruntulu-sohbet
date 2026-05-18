@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth } from "../firebase";
 
 export default function RegisterPage() {
 
@@ -31,157 +31,58 @@ export default function RegisterPage() {
 
   return (
 
-    <main
-      style={{
-        minHeight: "100vh",
-        background: "#111827",
+    <main style={styles.page}>
 
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+      <div style={styles.wrap}>
 
-      <div
-        style={{
-          width: "350px",
+        <div style={styles.diamond}>
+          💎
+        </div>
 
-          background: "#1F2937",
-
-          padding: "30px",
-
-          borderRadius: "20px",
-
-          border: "2px solid gold",
-
-          display: "flex",
-          flexDirection: "column",
-
-          gap: "15px",
-        }}
-      >
-
-        <h1
-          style={{
-            color: "gold",
-
-            textAlign: "center",
-
-            fontSize: "32px",
-
-            fontWeight: "bold",
-          }}
-        >
-          AURA LIVE
+        <h1 style={styles.aura}>
+          AURA
         </h1>
 
-        <p
-          style={{
-            color: "white",
+        <h2 style={styles.live}>
+          LIVE
+        </h2>
 
-            fontWeight: "bold",
+        <div style={styles.line}>
+          ◇
+        </div>
 
-            marginBottom: "-5px",
-          }}
-        >
-          E-Mail
+        <p style={styles.premium}>
+          PREMİUM GÖRÜNTÜLÜ SOHBET
         </p>
 
         <input
-          type="email"
-
+          style={styles.input}
+          placeholder="👤 Kullanıcı Adı / E-Mail"
           value={email}
-
           onChange={(e) => setEmail(e.target.value)}
-
-          style={{
-            width: "100%",
-
-            padding: "15px",
-
-            borderRadius: "12px",
-
-            border: "2px solid gold",
-
-            background: "#374151",
-
-            color: "white",
-
-            fontSize: "18px",
-
-            fontWeight: "bold",
-
-            boxSizing: "border-box",
-          }}
         />
 
-        <p
-          style={{
-            color: "white",
-
-            fontWeight: "bold",
-
-            marginBottom: "-5px",
-          }}
-        >
-          Şifre
-        </p>
-
         <input
+          style={styles.input}
           type="password"
-
+          placeholder="🔒 Şifre"
           value={password}
-
           onChange={(e) => setPassword(e.target.value)}
-
-          style={{
-            width: "100%",
-
-            padding: "15px",
-
-            borderRadius: "12px",
-
-            border: "2px solid gold",
-
-            background: "#374151",
-
-            color: "white",
-
-            fontSize: "18px",
-
-            fontWeight: "bold",
-
-            boxSizing: "border-box",
-          }}
         />
 
         <button
+          style={styles.button}
           onClick={kayitOl}
-
-          style={{
-            width: "100%",
-
-            padding: "15px",
-
-            borderRadius: "12px",
-
-            border: "none",
-
-            background: "gold",
-
-            color: "black",
-
-            fontSize: "18px",
-
-            fontWeight: "bold",
-
-            cursor: "pointer",
-
-            marginTop: "10px",
-          }}
         >
           Kayıt Ol
         </button>
+
+        <p style={styles.login}>
+          Zaten hesabın var mı?
+          <span style={styles.gold}>
+            {" "}Giriş Yap
+          </span>
+        </p>
 
       </div>
 
@@ -190,3 +91,178 @@ export default function RegisterPage() {
   );
 
 }
+
+const styles = {
+
+  page: {
+
+    minHeight: "100vh",
+
+    background:
+      "radial-gradient(circle at top, #14213d 0%, #050814 45%, #000000 100%)",
+
+    display: "flex",
+
+    justifyContent: "center",
+
+    alignItems: "center",
+
+    fontFamily: "Arial, sans-serif",
+
+    color: "white",
+
+  },
+
+  wrap: {
+
+    width: "720px",
+
+    maxWidth: "92vw",
+
+    textAlign: "center",
+
+  },
+
+  diamond: {
+
+    fontSize: "90px",
+
+    marginBottom: "5px",
+
+    filter: "drop-shadow(0 0 25px gold)",
+
+  },
+
+  aura: {
+
+    fontSize: "120px",
+
+    lineHeight: "0.85",
+
+    fontWeight: "900",
+
+    color: "#ffd700",
+
+    letterSpacing: "8px",
+
+    textShadow:
+      "0 0 10px #ffd700, 0 0 35px #ff9900, 0 4px 0 #8a5a00",
+
+  },
+
+  live: {
+
+    fontSize: "70px",
+
+    fontWeight: "900",
+
+    color: "#ffd700",
+
+    letterSpacing: "14px",
+
+    textShadow:
+      "0 0 10px #ffd700, 0 0 30px #ff9900, 0 3px 0 #8a5a00",
+
+  },
+
+  line: {
+
+    color: "#ffd700",
+
+    fontSize: "28px",
+
+    margin: "8px 0",
+
+    textShadow: "0 0 20px gold",
+
+  },
+
+  premium: {
+
+    fontSize: "28px",
+
+    letterSpacing: "6px",
+
+    marginBottom: "28px",
+
+    color: "#f8fafc",
+
+  },
+
+  input: {
+
+    width: "620px",
+
+    maxWidth: "92vw",
+
+    height: "64px",
+
+    display: "block",
+
+    margin: "14px auto",
+
+    borderRadius: "14px",
+
+    border: "1px solid rgba(255,215,0,0.7)",
+
+    background: "rgba(255,255,255,0.06)",
+
+    color: "white",
+
+    fontSize: "22px",
+
+    padding: "0 24px",
+
+    outline: "none",
+
+  },
+
+  button: {
+
+    width: "620px",
+
+    maxWidth: "92vw",
+
+    height: "74px",
+
+    marginTop: "16px",
+
+    borderRadius: "14px",
+
+    border: "none",
+
+    background:
+      "linear-gradient(180deg, #ffe36b, #ffc400, #d99000)",
+
+    color: "black",
+
+    fontSize: "30px",
+
+    fontWeight: "900",
+
+    cursor: "pointer",
+
+    boxShadow:
+      "0 0 30px rgba(255,194,0,0.55)",
+
+  },
+
+  login: {
+
+    marginTop: "28px",
+
+    fontSize: "22px",
+
+    color: "#e5e7eb",
+
+  },
+
+  gold: {
+
+    color: "#ffd700",
+
+    fontWeight: "bold",
+
+  },
+
+};
