@@ -1,95 +1,50 @@
-.registerMain {
-
-  min-height: 100vh;
-  background: black;
-
+.registerContainer {
+  width: 100%;
+  height: 100vh;
+  background: #0f172a;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .registerBox {
-
   width: 350px;
-
-  background: #111111;
-
-  padding: 30px;
-
+  background: #1e293b;
+  padding: 40px;
   border-radius: 20px;
-
   display: flex;
   flex-direction: column;
-
   gap: 20px;
-
-  border: 2px solid gold;
-
 }
 
-.registerTitle {
-
+.title {
   color: gold;
-
   text-align: center;
-
   font-size: 32px;
-
   font-weight: bold;
-
 }
 
-.registerInput {
-
-  width: 100%;
-
+.input {
   padding: 15px;
-
   border-radius: 12px;
-
-  border: 2px solid gold;
-
-  background: #222222;
-
-  color: white !important;
-
-  font-size: 18px;
-
-  font-weight: bold;
-
+  border: none;
   outline: none;
-
-  box-sizing: border-box;
-
+  font-size: 18px;
+  background: white;
+  color: black;
 }
 
-.registerInput::placeholder {
-
-  color: #bbbbbb !important;
-
-  opacity: 1;
-
+.input::placeholder {
+  color: gray;
 }
 
 .registerButton {
-
-  width: 100%;
-
   padding: 15px;
-
   border-radius: 12px;
-
   border: none;
-
   background: gold;
-
   color: black;
-
   font-size: 18px;
-
   font-weight: bold;
-
   cursor: pointer;
-
 }
