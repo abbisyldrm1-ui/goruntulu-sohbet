@@ -1,0 +1,28 @@
+{
+  "name": "goruntulu-sohbet",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "agora-rtc-sdk-ng": "^4.24.3",
+    "firebase": "^12.13.0",
+    "next": "16.2.6",
+    "peer": "^1.0.2",
+    "peerjs": "^1.5.5",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4"
+  }
+}

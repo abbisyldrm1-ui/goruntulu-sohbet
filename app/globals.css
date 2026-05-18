@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #060606;
+  --card: #111111;
+  --gold: #d4af37;
+  --gold2: #f5d76e;
+  --text: #ffffff;
+  --border: rgba(255,255,255,0.08);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,
+body{
+  width:100%;
+  min-height:100%;
+  background:#060606;
+  color:white;
+  font-family:Arial, Helvetica, sans-serif;
+  overflow-x:hidden;
+}
+
+body{
+  background:
+    radial-gradient(circle at top left, rgba(212,175,55,0.15), transparent 25%),
+    radial-gradient(circle at bottom right, rgba(212,175,55,0.08), transparent 25%),
+    #060606;
+}
+
+.glass{
+  background:rgba(255,255,255,0.04);
+  backdrop-filter:blur(20px);
+}
+
+.gold-btn{
+  background:linear-gradient(135deg,#d4af37,#f5d76e);
+  color:#000;
+  font-weight:bold;
+}
