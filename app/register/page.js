@@ -1,80 +1,102 @@
-export default function Register() {
+"use client";
+
+import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
+
+export default function RegisterPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const kayitOl = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+
+      alert("Kayıt başarılı");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   return (
-
-    <div
+    <main
       style={{
         minHeight: "100vh",
+        background: "#0f0f0f",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background:
-          "linear-gradient(to bottom,#f8fbff,#e7f2ff)",
       }}
     >
-
       <div
         style={{
-          background: "white",
-          padding: "40px",
-          borderRadius: "30px",
-          width: "320px",
-          textAlign: "center",
+          width: "350px",
+          background: "#1a1a1a",
+          padding: "30px",
+          borderRadius: "20px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "15px",
         }}
       >
-
         <h1
           style={{
-            color: "#7cc4ff",
-            marginBottom: "20px",
+            color: "gold",
+            textAlign: "center",
+            fontSize: "32px",
           }}
         >
-          AURA LIVE
+          KAYIT OL
         </h1>
 
         <input
-          placeholder="Kullanıcı adı"
+          type="email"
+          placeholder="E-Mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           style={{
-            width: "100%",
-            padding: "14px",
-            marginBottom: "15px",
-            borderRadius: "15px",
-            border: "2px solid #dcefff",
+            padding: "15px",
+            borderRadius: "10px",
+            border: "none",
+            background: "white",
+            color: "black",
+            fontSize: "16px",
+            outline: "none",
           }}
         />
 
         <input
-          placeholder="Şifre"
           type="password"
+          placeholder="Şifre"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           style={{
-            width: "100%",
-            padding: "14px",
-            marginBottom: "15px",
-            borderRadius: "15px",
-            border: "2px solid #dcefff",
+            padding: "15px",
+            borderRadius: "10px",
+            border: "none",
+            background: "white",
+            color: "black",
+            fontSize: "16px",
+            outline: "none",
           }}
         />
 
         <button
+          onClick={kayitOl}
           style={{
-            width: "100%",
             padding: "15px",
-            borderRadius: "18px",
+            borderRadius: "10px",
             border: "none",
-            background:
-              "linear-gradient(to right,#9fd8ff,#79c7ff)",
-            color: "white",
+            background: "gold",
+            color: "black",
             fontWeight: "bold",
+            fontSize: "16px",
             cursor: "pointer",
           }}
         >
-          Kayıt Ol
+          KAYIT OL
         </button>
-
       </div>
-
-    </div>
-
+    </main>
   );
-
 }
