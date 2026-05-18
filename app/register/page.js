@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
+import "./register.css";
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -19,35 +20,11 @@ export default function RegisterPage() {
   };
 
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        backgroundColor: "#0f0f0f",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <div
-        style={{
-          width: "350px",
-          backgroundColor: "#1a1a1a",
-          padding: "30px",
-          borderRadius: "20px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "20px",
-        }}
-      >
-        <h1
-          style={{
-            color: "gold",
-            textAlign: "center",
-            fontSize: "32px",
-            fontWeight: "bold",
-          }}
-        >
-          KAYIT OL
+    <main className="registerMain">
+      <div className="registerBox">
+
+        <h1 className="registerTitle">
+          AURA LIVE
         </h1>
 
         <input
@@ -55,18 +32,7 @@ export default function RegisterPage() {
           placeholder="E-Mail"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "15px",
-            borderRadius: "12px",
-            border: "2px solid gold",
-            backgroundColor: "#ffffff",
-            color: "#000000",
-            fontSize: "18px",
-            fontWeight: "bold",
-            outline: "none",
-            boxSizing: "border-box",
-          }}
+          className="registerInput"
         />
 
         <input
@@ -74,36 +40,16 @@ export default function RegisterPage() {
           placeholder="Şifre"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "15px",
-            borderRadius: "12px",
-            border: "2px solid gold",
-            backgroundColor: "#ffffff",
-            color: "#000000",
-            fontSize: "18px",
-            fontWeight: "bold",
-            outline: "none",
-            boxSizing: "border-box",
-          }}
+          className="registerInput"
         />
 
         <button
           onClick={kayitOl}
-          style={{
-            width: "100%",
-            padding: "15px",
-            borderRadius: "12px",
-            border: "none",
-            backgroundColor: "gold",
-            color: "#000000",
-            fontSize: "18px",
-            fontWeight: "bold",
-            cursor: "pointer",
-          }}
+          className="registerButton"
         >
-          KAYIT OL
+          Kayıt Ol
         </button>
+
       </div>
     </main>
   );

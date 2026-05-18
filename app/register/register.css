@@ -1,0 +1,53 @@
+.registerMain {
+  min-height: 100vh;
+  background: #0f0f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerBox {
+  width: 350px;
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.registerTitle {
+  color: gold;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.registerInput {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid gold;
+  background: white;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.registerInput::placeholder {
+  color: #555;
+}
+
+.registerButton {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  background: gold;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
