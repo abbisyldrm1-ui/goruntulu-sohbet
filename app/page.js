@@ -2,40 +2,70 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
+
 export default function HomePage() {
 
   const videoRef = useRef(null);
 
   const [online] = useState(1284);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
 
-    const startCamera = async () => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (user) => {
 
-      try {
+        if (!user) {
 
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
-          audio: true,
-        });
+          window.location.href = "/login";
 
-        if (videoRef.current) {
+        } else {
 
-          videoRef.current.srcObject = stream;
+          kameraBaslat();
 
         }
 
-      } catch (err) {
+      }
+    );
 
-        console.log(err);
+    return () => unsubscribe();
+
+  }, []);
+
+  const kameraBaslat = async () => {
+
+    try {
+
+      const stream =
+        await navigator.mediaDevices.getUserMedia({
+
+          video: true,
+
+          audio: true,
+
+        });
+
+      if (videoRef.current) {
+
+        videoRef.current.srcObject = stream;
 
       }
 
-    };
+      setLoading(false);
 
-    startCamera();
+    } catch (err) {
 
-  }, []);
+      console.log(err);
+
+      alert("Kamera izni gerekli");
+
+    }
+
+  };
 
   return (
 
@@ -75,9 +105,21 @@ export default function HomePage() {
 
         </div>
 
-        <div style={styles.waitingText}>
-          EŞLEŞME BEKLENİYOR...
-        </div>
+        {loading && (
+
+          <div style={styles.waitingText}>
+            KAMERA BAĞLANIYOR...
+          </div>
+
+        )}
+
+        <video
+          ref={videoRef}
+          autoPlay
+          playsInline
+          muted
+          style={styles.mainVideo}
+        />
 
         <video
           ref={videoRef}
@@ -181,7 +223,8 @@ const styles = {
 
     fontWeight: "bold",
 
-    border: "1px solid rgba(0,255,120,0.3)",
+    border:
+      "1px solid rgba(0,255,120,0.3)",
 
     backdropFilter: "blur(12px)",
 
@@ -206,7 +249,8 @@ const styles = {
     background:
       "linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03))",
 
-    border: "1px solid rgba(255,255,255,0.1)",
+    border:
+      "1px solid rgba(255,255,255,0.1)",
 
     backdropFilter: "blur(25px)",
 
@@ -214,7 +258,18 @@ const styles = {
       "0 0 60px rgba(0,0,0,0.6)",
 
   },
-    topButtons: {
+
+  mainVideo: {
+
+    width: "100%",
+
+    height: "100%",
+
+    objectFit: "cover",
+
+  },
+
+  topButtons: {
 
     position: "absolute",
 
@@ -234,9 +289,11 @@ const styles = {
 
   readyBtn: {
 
-    background: "rgba(255,255,255,0.15)",
+    background:
+      "rgba(255,255,255,0.15)",
 
-    border: "1px solid rgba(255,255,255,0.15)",
+    border:
+      "1px solid rgba(255,255,255,0.15)",
 
     color: "white",
 
@@ -280,7 +337,8 @@ const styles = {
 
     left: "50%",
 
-    transform: "translate(-50%,-50%)",
+    transform:
+      "translate(-50%,-50%)",
 
     fontSize: "34px",
 
@@ -288,7 +346,8 @@ const styles = {
 
     letterSpacing: "4px",
 
-    color: "rgba(255,255,255,0.15)",
+    color:
+      "rgba(255,255,255,0.3)",
 
     zIndex: 1,
 
@@ -310,7 +369,8 @@ const styles = {
 
     objectFit: "cover",
 
-    border: "3px solid rgba(255,255,255,0.2)",
+    border:
+      "3px solid rgba(255,255,255,0.2)",
 
     boxShadow:
       "0 0 40px rgba(0,0,0,0.6)",
@@ -327,7 +387,8 @@ const styles = {
 
     left: "50%",
 
-    transform: "translateX(-50%)",
+    transform:
+      "translateX(-50%)",
 
     display: "flex",
 
@@ -369,7 +430,8 @@ const styles = {
 
     borderRadius: "999px",
 
-    border: "1px solid rgba(255,255,255,0.1)",
+    border:
+      "1px solid rgba(255,255,255,0.1)",
 
     fontSize: "22px",
 
@@ -392,7 +454,8 @@ const styles = {
 
     borderRadius: "50%",
 
-    border: "1px solid rgba(255,255,255,0.1)",
+    border:
+      "1px solid rgba(255,255,255,0.1)",
 
     background:
       "rgba(255,255,255,0.08)",
@@ -405,4 +468,4 @@ const styles = {
 
   },
 
-}
+};
