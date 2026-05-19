@@ -2,201 +2,143 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function HomePage() {
-
+export default function Home() {
   const videoRef = useRef(null);
 
-  const [mic,setMic] = useState(true);
-
-  const [cam,setCam] = useState(true);
+  const [mic, setMic] = useState(true);
+  const [cam, setCam] = useState(true);
 
   useEffect(() => {
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: true,
+        });
 
-    kameraBaslat();
-
-  }, []);
-
-  const kameraBaslat = async () => {
-
-    try{
-
-      const stream =
-      await navigator.mediaDevices.getUserMedia({
-
-        video:true,
-        audio:true,
-
-      });
-
-      if(videoRef.current){
-
-        videoRef.current.srcObject = stream;
-
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+      } catch (err) {
+        console.log(err);
       }
-
-    }catch(err){
-
-      console.log(err);
-
     }
 
-  };
+    startCamera();
+  }, []);
 
-  const eslesmeAra = () => {
+  const toggleMic = () => {
+    const stream = videoRef.current?.srcObject;
 
-    alert("Eşleşme aranıyor 🔥");
-
-  };
-
-  const sonraki = () => {
-
-    alert("Sonraki kullanıcı 🔥");
-
-  };
-
-  const mikrofonKapat = () => {
+    if (stream) {
+      stream.getAudioTracks().forEach((track) => {
+        track.enabled = !mic;
+      });
+    }
 
     setMic(!mic);
-
   };
 
-  const kameraKapat = () => {
+  const toggleCam = () => {
+    const stream = videoRef.current?.srcObject;
+
+    if (stream) {
+      stream.getVideoTracks().forEach((track) => {
+        track.enabled = !cam;
+      });
+    }
 
     setCam(!cam);
-
   };
 
-  return(
+  return (
+    <main className="app">
+      <div className="topBar">
+        <div className="logoArea">
+          <div className="diamond">💎</div>
 
-    <main className="main-page">
-
-      <div className="top-bar">
-
-        <div className="logo-wrap">
-
-          <div className="logo-top">
-
-            <div className="logo-icon">
-              💎
-            </div>
-
-            <div className="logo-aura">
-              AURA
-            </div>
-
+          <div>
+            <h1>AURA</h1>
+            <span>LIVE</span>
           </div>
-
-          <div className="logo-live">
-            LIVE
-          </div>
-
         </div>
 
-        <div className="online-box">
-          🟢 1284 ONLINE
+        <div className="onlineBox">
+          <div className="dot"></div>
+          1284 ONLINE
         </div>
-
       </div>
 
-      <div className="video-card">
-
-        <button className="friend-add">
-          👤+
+      <div className="mainCard">
+        <button className="friendBtn">
+          👤 Arkadaş Ekle
         </button>
 
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          playsInline
-          className="my-video"
-          style={{
-            opacity:cam ? 1 : 0.2
-          }}
-        />
+        <div className="cameraBox">
+          <video ref={videoRef} autoPlay playsInline muted />
+        </div>
 
-        <div className="waiting">
+        <div className="centerContent">
+          <div className="loadingDots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-          <h1>
+          <h2>
             EŞLEŞME
-            <br/>
+            <br />
             BEKLENİYOR...
-          </h1>
+          </h2>
 
-          <p>
-            Sana uygun kullanıcı aranıyor.
-          </p>
+          <p>Sana uygun kullanıcı aranıyor.</p>
 
+          <button className="matchBtn">
+            ✨
+            <span>EŞLEŞME ARA</span>
+          </button>
         </div>
 
-        <button
-          className="next-btn"
-          onClick={sonraki}
-        >
-          🔥 SONRAKİ
-        </button>
+        <div className="bottomArea">
+          <div className="leftBtns">
+            <button className="circleBtn" onClick={toggleMic}>
+              {mic ? "🎤" : "🔇"}
+              <small>Ses</small>
+            </button>
 
-        <button
-          className="center-search"
-          onClick={eslesmeAra}
-        >
-          ✨ EŞLEŞME ARA
-        </button>
+            <button className="circleBtn" onClick={toggleCam}>
+              {cam ? "📷" : "🚫"}
+              <small>Kamera</small>
+            </button>
+          </div>
 
-        <div className="left-controls">
-
-          <button
-            className="control-btn"
-            onClick={mikrofonKapat}
-          >
-            {mic ? "🎤" : "🔇"}
+          <button className="nextBtn">
+            🔥 SONRAKİ
           </button>
-
-          <button
-            className="control-btn"
-            onClick={kameraKapat}
-          >
-            {cam ? "📷" : "🚫"}
-          </button>
-
         </div>
-
       </div>
 
-      <div className="bottom-nav">
-
-        <div className="nav-item nav-active">
+      <div className="navbar">
+        <button className="active">
           🏠
-          <br/>
-          Ana Sayfa
-        </div>
+          <span>Ana Sayfa</span>
+        </button>
 
-        <div
-          className="nav-item"
-          onClick={() =>
-          window.location.href="/"}
-        >
+        <button>
           👑
-          <br/>
-          Premium
-        </div>
+          <span>Premium</span>
+        </button>
 
-        <div className="nav-item">
+        <button>
           💬
-          <br/>
-          Mesajlar
-        </div>
+          <span>Mesajlar</span>
+        </button>
 
-        <div className="nav-item">
+        <button>
           👤
-          <br/>
-          Profil
-        </div>
-
+          <span>Profil</span>
+        </button>
       </div>
-
     </main>
-
   );
-
 }
